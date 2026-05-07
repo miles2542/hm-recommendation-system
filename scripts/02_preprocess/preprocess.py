@@ -4,14 +4,14 @@ from pathlib import Path
 from rich.console import Console
 
 # --- Configuration & Constants ---
-PROCESSED_DIR = Path("data/processed")
-OUTPUT_DIR = Path("data/processed")
+PROCESSED_DIR = Path(r"F:\PYTHON\hm-recommendation-system\data\processed")
+OUTPUT_DIR = Path(r"F:\PYTHON\hm-recommendation-system\data\processed")
 ID_MAPPING_PATH = OUTPUT_DIR / "id_mapping.json"
 
 SUPER_CODE = "2c29ae653a9282cce4151bd87643c911a68d276429a91f8ca0d4b6efa8100"
 RESELLER_CUTOFF = 1000
 TEST_WINDOW_DAYS = 28
-DECAY_HALF_LIFE_RATE = 0.023
+DECAY_HALF_LIFE_RATE = 0.055
 
 AGE_MAPPING = {
     "Lingeries/Tights": 29,
