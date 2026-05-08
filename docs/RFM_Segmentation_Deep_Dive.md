@@ -12,46 +12,46 @@
 
 #### Young Whales
 
-- **Scale:** 313,301 customers (**23.40%**)
-- **Behavioral medians:** R=72, F=11, M=0.958220, Age=26
-- **Basket intensity:** 3.7876
+- **Scale:** 312,723 customers (**23.36%**)
+- **Behavioral medians:** R=72, F=11, M=0.960407, Age=26
+- **Basket intensity:** 3.7883
 - **Revenue contribution:** **54.35%**
 - **Interpretation:** This is the principal profit engine. High frequency and high spend indicate low friction in repeat purchase behavior and high acceptance for premium baskets.
 - **Operating implication:** Treat as a high-value exploitation segment; optimize for margin density, assortment depth, and attachment value per session.
 
 #### Mature Champions
 
-- **Scale:** 208,879 customers (**15.60%**)
-- **Behavioral medians:** R=82, F=9, M=0.792576, Age=51
-- **Basket intensity:** 3.3425
-- **Revenue contribution:** **31.11%**
+- **Scale:** 208,846 customers (**15.60%**)
+- **Behavioral medians:** R=82, F=9, M=0.791822, Age=51
+- **Basket intensity:** 3.3420
+- **Revenue contribution:** **31.08%**
 - **Interpretation:** High-value loyal cohort with stable cadence and lower volatility than Whales.
 - **Operating implication:** Retention quality is more important than novelty pressure; emphasize repeatable relevance, premium essentials, and churn prevention at low incentive cost.
 
 #### Young At-Risk
 
-- **Scale:** 319,247 customers (**23.85%**)
-- **Behavioral medians:** R=469, F=1, M=0.093169, Age=27
-- **Basket intensity:** 3.2978
-- **Revenue contribution:** **5.30%**
+- **Scale:** 319,310 customers (**23.85%**)
+- **Behavioral medians:** R=469, F=1, M=0.093153, Age=27
+- **Basket intensity:** 3.2977
+- **Revenue contribution:** **5.29%**
 - **Interpretation:** Largest segment by headcount but weak by monetization due to extreme recency decay.
 - **Operating implication:** Treat as reactivation inventory, not revenue core; use conversion-safe items and controlled promotion depth.
 
 #### Mature Newcomers
 
-- **Scale:** 267,471 customers (**19.98%**)
+- **Scale:** 267,518 customers (**19.98%**)
 - **Behavioral medians:** R=391, F=1, M=0.101644, Age=53
-- **Basket intensity:** 2.9317
+- **Basket intensity:** 2.9319
 - **Revenue contribution:** **4.41%**
 - **Interpretation:** Low-history segment with limited behavioral footprint and delayed recurrence.
 - **Operating implication:** Prioritize certainty-first recommendations (demographic-fit popularity, low-risk combinations) until interaction density is sufficient.
 
 #### Young Core
 
-- **Scale:** 229,887 customers (**17.17%**)
-- **Behavioral medians:** R=97, F=2, M=0.154136, Age=25
-- **Basket intensity:** 2.9062
-- **Revenue contribution:** **4.83%**
+- **Scale:** 230,388 customers (**17.21%**)
+- **Behavioral medians:** R=97, F=2, M=0.155644, Age=25
+- **Basket intensity:** 2.9070
+- **Revenue contribution:** **4.87%**
 - **Interpretation:** Mid-intensity demand baseline; neither premium-heavy nor churn-dominant.
 - **Operating implication:** Main segment for incremental frequency uplift and cross-sell breadth optimization.
 
@@ -68,30 +68,30 @@
 
 ### B. Economic validity proof
 
-- **Pareto test:** Whales + Champions represent **39.00%** of customers and **85.45%** of total monetary value.
-- **Value concentration lift:** **2.1911x** revenue share versus population share.
+- **Pareto test:** Whales + Champions represent **38.96%** of customers and **85.43%** of total monetary value.
+- **Value concentration lift:** **2.1927x** revenue share versus population share.
 - **Implication:** Clusters are not balanced by count; they are intentionally differentiated by economic utility.
 
 ### C. Distributional separation proof
 
-- Monetary Q75 for lower-value pool (Core + Newcomers): **0.220271**
-- Monetary Q25 for high-value pool (Whales + Champions): **0.543000**
-- Absolute boundary gap: **0.322729**
-- Boundary ratio (Q25 high / Q75 low): **2.4650x**
+- Monetary Q75 for lower-value pool (Core + Newcomers): **0.221136**
+- Monetary Q25 for high-value pool (Whales + Champions): **0.543780**
+- Absolute boundary gap: **0.322644**
+- Boundary ratio (Q25 high / Q75 low): **2.4590x**
 - **Implication:** High-value and lower-value monetary bands are materially separated; this supports segment-specific policy without major overlap risk.
 
 ### D. K-selection evidence (same pipeline method)
 
 | K | WCSS | Silhouette |
 |---|------:|-----------:|
-| 3 | 168681.63 | 0.3436 |
-| 4 | 139572.19 | 0.3149 |
-| 5 | 117563.60 | 0.3097 |
-| 6 | 102449.72 | 0.3181 |
-| 7 | 92227.18 | 0.3123 |
-| 8 | 83901.78 | 0.3003 |
-| 9 | 76876.39 | 0.3050 |
-| 10 | 72099.11 | 0.2999 |
+| 3 | 168396.71 | 0.3396 |
+| 4 | 139125.06 | 0.3135 |
+| 5 | 117008.39 | 0.3082 |
+| 6 | 102038.21 | 0.3164 |
+| 7 | 91660.96 | 0.3108 |
+| 8 | 83562.36 | 0.2983 |
+| 9 | 76646.52 | 0.3046 |
+| 10 | 71912.47 | 0.2999 |
 
 Interpretation:
 

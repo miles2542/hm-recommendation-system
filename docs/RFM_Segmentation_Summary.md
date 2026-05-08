@@ -15,15 +15,15 @@
 - **Memory optimization:** Export schema uses **customer_id Int32**, **cluster_id Int32**, **age Int8** to reduce footprint and keep downstream joins stable.
 
 ## 3. Segment Profiles & Results (The Output)
-- **Young At-Risk** (Share: **23.85%** | Medians: **R=469, F=1, M=0.093169, Age=27** | Basket Size: **3.2978** items)  
+- **Young At-Risk** (Share: **23.85%** | Medians: **R=469, F=1, M=0.093153, Age=27** | Basket Size: **3.2977** items)  
   Description: Low-frequency, stale customers with very weak recent activity. Prioritize win-back triggers and high-CTR staples.
-- **Young Whales** (Share: **23.40%** | Medians: **R=72, F=11, M=0.958220, Age=26** | Basket Size: **3.7876** items)  
+- **Young Whales** (Share: **23.36%** | Medians: **R=72, F=11, M=0.960407, Age=26** | Basket Size: **3.7883** items)  
   Description: Highest-value and most active buyers. Prioritize premium cross-sell and margin-maximizing bundles.
-- **Mature Newcomers** (Share: **19.98%** | Medians: **R=391, F=1, M=0.101644, Age=53** | Basket Size: **2.9317** items)  
+- **Mature Newcomers** (Share: **19.98%** | Medians: **R=391, F=1, M=0.101644, Age=53** | Basket Size: **2.9319** items)  
   Description: Low-history older customers with limited engagement depth. Use onboarding and age-relevant trend recommendations.
-- **Young Core** (Share: **17.17%** | Medians: **R=97, F=2, M=0.154136, Age=25** | Basket Size: **2.9062** items)  
+- **Young Core** (Share: **17.21%** | Medians: **R=97, F=2, M=0.155644, Age=25** | Basket Size: **2.9070** items)  
   Description: Broad mid-value base with moderate repeat behavior. Use frequency-lift offers and personalized replenishment.
-- **Mature Champions** (Share: **15.60%** | Medians: **R=82, F=9, M=0.792576, Age=51** | Basket Size: **3.3425** items)  
+- **Mature Champions** (Share: **15.60%** | Medians: **R=82, F=9, M=0.791822, Age=51** | Basket Size: **3.3420** items)  
   Description: Loyal, strong spenders with consistent activity. Target curated assortments and premium retention campaigns.
 
 ## 4. Downstream Usage (For RecSys / MBA)
