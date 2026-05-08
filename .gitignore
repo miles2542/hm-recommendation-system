@@ -226,13 +226,11 @@ temp/
 archive/
 
 # Data
-data/**
-!data/
-!data/processed/
-!data/processed/train_processed.parquet
-!data/processed/test_processed.parquet
-!data/processed/customers_processed.parquet
-!data/processed/articles_processed.parquet
+data/raw/**
+data/processed/id_mapping.json
+data/processed/articles.parquet
+data/processed/customers.parquet
+data/processed/transactions_train.parquet
 
 /.quarto/
 **/*.quarto_ipynb
