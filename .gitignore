@@ -236,3 +236,4 @@ data/**
 
 /.quarto/
 **/*.quarto_ipynb
+hm_fix.ipynb

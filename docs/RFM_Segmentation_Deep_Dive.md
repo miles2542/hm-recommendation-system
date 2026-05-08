@@ -12,46 +12,46 @@
 
 #### Young Whales
 
-- **Scale:** 296,078 customers (**22.12%**)
-- **Behavioral medians:** R=72, F=37, M=1.036119, Age=27
-- **Basket intensity:** 1.1079
-- **Revenue contribution:** **55.05%**
+- **Scale:** 313,301 customers (**23.40%**)
+- **Behavioral medians:** R=72, F=11, M=0.958220, Age=26
+- **Basket intensity:** 3.7876
+- **Revenue contribution:** **54.35%**
 - **Interpretation:** This is the principal profit engine. High frequency and high spend indicate low friction in repeat purchase behavior and high acceptance for premium baskets.
 - **Operating implication:** Treat as a high-value exploitation segment; optimize for margin density, assortment depth, and attachment value per session.
 
 #### Mature Champions
 
-- **Scale:** 207,780 customers (**15.52%**)
-- **Behavioral medians:** R=84, F=26, M=0.779186, Age=51
-- **Basket intensity:** 1.1033
-- **Revenue contribution:** **30.19%**
+- **Scale:** 208,879 customers (**15.60%**)
+- **Behavioral medians:** R=82, F=9, M=0.792576, Age=51
+- **Basket intensity:** 3.3425
+- **Revenue contribution:** **31.11%**
 - **Interpretation:** High-value loyal cohort with stable cadence and lower volatility than Whales.
 - **Operating implication:** Retention quality is more important than novelty pressure; emphasize repeatable relevance, premium essentials, and churn prevention at low incentive cost.
 
 #### Young At-Risk
 
-- **Scale:** 324,677 customers (**24.25%**)
-- **Behavioral medians:** R=460, F=3, M=0.086373, Age=27
-- **Basket intensity:** 1.0994
-- **Revenue contribution:** **4.82%**
+- **Scale:** 319,247 customers (**23.85%**)
+- **Behavioral medians:** R=469, F=1, M=0.093169, Age=27
+- **Basket intensity:** 3.2978
+- **Revenue contribution:** **5.30%**
 - **Interpretation:** Largest segment by headcount but weak by monetization due to extreme recency decay.
 - **Operating implication:** Treat as reactivation inventory, not revenue core; use conversion-safe items and controlled promotion depth.
 
 #### Mature Newcomers
 
-- **Scale:** 268,604 customers (**20.06%**)
-- **Behavioral medians:** R=385, F=3, M=0.101627, Age=53
-- **Basket intensity:** 1.0941
-- **Revenue contribution:** **4.17%**
+- **Scale:** 267,471 customers (**19.98%**)
+- **Behavioral medians:** R=391, F=1, M=0.101644, Age=53
+- **Basket intensity:** 2.9317
+- **Revenue contribution:** **4.41%**
 - **Interpretation:** Low-history segment with limited behavioral footprint and delayed recurrence.
 - **Operating implication:** Prioritize certainty-first recommendations (demographic-fit popularity, low-risk combinations) until interaction density is sufficient.
 
 #### Young Core
 
-- **Scale:** 241,646 customers (**18.05%**)
-- **Behavioral medians:** R=94, F=7, M=0.186390, Age=25
-- **Basket intensity:** 1.0770
-- **Revenue contribution:** **5.77%**
+- **Scale:** 229,887 customers (**17.17%**)
+- **Behavioral medians:** R=97, F=2, M=0.154136, Age=25
+- **Basket intensity:** 2.9062
+- **Revenue contribution:** **4.83%**
 - **Interpretation:** Mid-intensity demand baseline; neither premium-heavy nor churn-dominant.
 - **Operating implication:** Main segment for incremental frequency uplift and cross-sell breadth optimization.
 
@@ -68,35 +68,41 @@
 
 ### B. Economic validity proof
 
-- **Pareto test:** Whales + Champions represent **37.64%** of customers and **85.23%** of total monetary value.
-- **Value concentration lift:** **2.2647x** revenue share versus population share.
+- **Pareto test:** Whales + Champions represent **39.00%** of customers and **85.45%** of total monetary value.
+- **Value concentration lift:** **2.1911x** revenue share versus population share.
 - **Implication:** Clusters are not balanced by count; they are intentionally differentiated by economic utility.
 
 ### C. Distributional separation proof
 
-- Monetary Q75 for lower-value pool (Core + Newcomers): **0.241492**
-- Monetary Q25 for high-value pool (Whales + Champions): **0.589000**
-- Absolute boundary gap: **0.347508**
-- Boundary ratio (Q25 high / Q75 low): **2.4390x**
+- Monetary Q75 for lower-value pool (Core + Newcomers): **0.220271**
+- Monetary Q25 for high-value pool (Whales + Champions): **0.543000**
+- Absolute boundary gap: **0.322729**
+- Boundary ratio (Q25 high / Q75 low): **2.4650x**
 - **Implication:** High-value and lower-value monetary bands are materially separated; this supports segment-specific policy without major overlap risk.
 
 ### D. K-selection evidence (same pipeline method)
 
 | K | WCSS | Silhouette |
 |---|------:|-----------:|
-| 3 | 171475.58 | 0.3383 |
-| 4 | 143117.26 | 0.3082 |
-| 5 | 120434.76 | 0.3029 |
-| 6 | 103655.86 | 0.3141 |
-| 7 | 92798.19 | 0.3111 |
-| 8 | 84271.71 | 0.2952 |
-| 9 | 76918.01 | 0.3001 |
-| 10 | 71188.98 | 0.2961 |
+| 3 | 168681.63 | 0.3436 |
+| 4 | 139572.19 | 0.3149 |
+| 5 | 117563.60 | 0.3097 |
+| 6 | 102449.72 | 0.3181 |
+| 7 | 92227.18 | 0.3123 |
+| 8 | 83901.78 | 0.3003 |
+| 9 | 76876.39 | 0.3050 |
+| 10 | 72099.11 | 0.2999 |
 
 Interpretation:
 
 - Maximum silhouette appears at K=3, but K=5 is retained for decision granularity across economically distinct intervention groups.
 - This is a controlled business trade-off, not a methodological defect.
+
+## 2B) Methodological Justifications
+
+- **Silhouette Sampling:** required due to O(N^2) memory complexity; full-pair computation is infeasible at this scale.
+- **Yeo-Johnson:** chosen to handle Pareto-distributed right-skewed R/F/M features while preserving zero/negative compatibility.
+- **StandardScaler:** prevents Monetary from overpowering Age/Frequency in Euclidean distance for KMeans.
 
 ## 3) Deployment Logic for RecSys and MBA
 
@@ -107,6 +113,14 @@ Interpretation:
 - **At-Risk:** maximize reactivation probability under strict discount governance; prioritize historically high-conversion low-friction SKUs.
 - **Newcomers:** run age-conditioned popularity priors until sufficient interaction depth unlocks collaborative ranking.
 - **Core:** optimize frequency and category expansion with moderate exploration budget.
+
+### Actionable marketing tactics
+
+- **Young Whales:** Zero-Discount Upselling.
+- **Mature Champions:** Relationship & Replenishment.
+- **Young Core:** Basket Stretching (UPT Growth).
+- **Mature Newcomers:** Certainty & Risk-Reduction.
+- **Young/Mature At-Risk:** Margin-Controlled Win-Back.
 
 ### FP-Growth operating policy
 
