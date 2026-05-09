@@ -75,17 +75,7 @@ def generate_candidates(
         f"  [dim]feat_max_date = {feat_max_date}, target_users = {len(target_users):,}[/dim]"
     )
 
-    # 1a. Repurchase
-    repurch = (
-        feat_df.filter(pl.col("customer_id").is_in(target_users))
-        .group_by("customer_id")
-        .agg(pl.col("article_id").unique().alias("article_id"))
-        .explode("article_id")
-        .with_columns(pl.lit("repurchase").alias("src"))
-    )
-    console.print(f"  Repurchase: {len(repurch):,} pairs")
-
-    # 1b. Popularity (last 7 days of feature period)
+    # 1. Popularity (last 7 days of feature period)
     last_wk = feat_max_date - timedelta(days=6)
     pop_items = (
         feat_df.filter(pl.col("t_dat") >= last_wk)
@@ -105,21 +95,23 @@ def generate_candidates(
     )
     console.print(f"  Popularity: {len(pop):,} pairs")
 
-    # 1c. Item-CF (last 6 weeks of feat_df → batched cosine sim)
+    # 2. Item-CF (last 6 weeks of feat_df → batched cosine sim)
     feat_6w = feat_df.filter(pl.col("t_dat") >= feat_max_date - timedelta(days=41))
     feat_items = feat_6w["article_id"].unique().sort().to_list()
     feat_users_all = feat_6w["customer_id"].unique().sort().to_list()
     i2idx = {a: i for i, a in enumerate(feat_items)}
     u2idx = {u: i for i, u in enumerate(feat_users_all)}
 
+    # FINAL FIX: Use time_weight for proper decay in CF Matrix
     rows = feat_6w["customer_id"].replace_strict(u2idx).to_numpy().astype(np.int32)
     cols = feat_6w["article_id"].replace_strict(i2idx).to_numpy().astype(np.int32)
+    tw_vals = feat_6w["time_weight"].to_numpy().astype(np.float32)
     ui_sp = sparse.csr_matrix(
-        (np.ones(len(rows), dtype=np.float32), (rows, cols)),
+        (tw_vals, (rows, cols)),
         shape=(len(feat_users_all), len(feat_items)),
     )
     iu_sp = ui_sp.T.tocsr()
-    del rows, cols, feat_6w
+    del rows, cols, tw_vals, feat_6w
     gc.collect()
 
     # Batched cosine → top-N similar items per item
@@ -180,31 +172,29 @@ def generate_candidates(
     )
     console.print(f"  Item-CF: {len(cf_cands):,} pairs")
 
-    # Merge & dedup, cap at N_CAND
+    # FINAL FIX: Merge, Anti-Join against history, and cap safely
     cast_expr = [
         pl.col("customer_id").cast(pl.Int32),
         pl.col("article_id").cast(pl.Int32),
     ]
-    all_cands = pl.concat(
-        [
-            repurch.select(["customer_id", "article_id", "src"]).with_columns(
-                cast_expr
-            ),
-            pop.select(["customer_id", "article_id", "src"]).with_columns(cast_expr),
-            cf_cands.select(["customer_id", "article_id", "src"]).with_columns(
-                cast_expr
-            ),
-        ]
-    ).unique(subset=["customer_id", "article_id"], keep="first")
+    all_cands = pl.concat([
+        pop.select(["customer_id", "article_id", "src"]).with_columns(cast_expr),
+        cf_cands.select(["customer_id", "article_id", "src"]).with_columns(cast_expr),
+    ]).unique(subset=["customer_id", "article_id"], keep="first")
 
+    user_hist_full = feat_df.select(["customer_id", "article_id"]).unique()
+    all_cands = all_cands.join(user_hist_full, on=["customer_id", "article_id"], how="anti")
+
+    SRC_MAP = {"cf": 0, "popularity": 1}
     all_cands = (
-        all_cands.with_columns(
-            pl.col("article_id").cum_count().over("customer_id").alias("rn")
-        )
-        .filter(pl.col("rn") <= N_CAND)
-        .drop("rn")
+        all_cands
+        .with_columns(pl.col("src").replace(SRC_MAP).cast(pl.Int8).alias("_src_ord"))
+        .sort(["customer_id", "_src_ord"])
+        .with_columns(pl.int_range(pl.len()).over("customer_id").alias("rn"))
+        .filter(pl.col("rn") < N_CAND)
+        .drop(["rn", "_src_ord"])
     )
-    console.print(f"  Total candidates: {len(all_cands):,}")
+    console.print(f"  Total novel candidates: {len(all_cands):,}")
     return all_cands
 
 
