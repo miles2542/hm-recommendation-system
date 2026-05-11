@@ -23,9 +23,16 @@ The final LightGBM learning-to-rank model demonstrates a 71% uplift in conversio
 
 ```mermaid
 graph TD
-    A[Raw H&M Data<br/>31.7M Rows] --> B(Temporal Split &<br/>Strict Isolation)
-    B --> C[Train Set<br/>27.8M Interactions]
-    B --> D["Holdout Test Set<br/>28 Days | 989k Interactions"]
+    %% Pastel Color Palette Definitions
+    classDef data fill:#E3F2FD,stroke:#1565C0,stroke-width:1px,color:#1565C0;
+    classDef proc fill:#E8F5E9,stroke:#2E7D32,stroke-width:1px,color:#2E7D32;
+    classDef model fill:#F3E5F5,stroke:#7B1FA2,stroke-width:1px,color:#7B1FA2;
+    classDef biz fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#E65100;
+
+    A[Raw H&M Data<br/>31.7M Rows]
+    B(Temporal Split &<br/>Strict Isolation)
+    C[Train Set<br/>27.8M Interactions]
+    D["Holdout Test Set<br/>28 Days | 989k Interactions"]
     
     C --> E[RFM Segmentation<br/>K-Means]
     C --> F[Feature Engineering<br/>Word2Vec, Stats]
@@ -41,6 +48,16 @@ graph TD
     
     I --> J((Business<br/>Simulation))
     G --> J
+
+    A --> B
+    B --> C
+    B --> D
+
+    %% Categorize Nodes
+    class A,C,D data;
+    class B,E,F proc;
+    class G,H,I model;
+    class J biz;
 ```
 
 ## 1. Data Foundation & Strict Temporal Isolation
@@ -50,6 +67,27 @@ Building a reliable recommender for fast fashion requires confronting severe pop
 ### The 28-Day Holdout Philosophy
 
 ```mermaid
+%%{init: { 'theme': 'base', 'themeVariables': { 
+    'primaryColor': '#1565C0',
+    'primaryTextColor': '#efefef',
+    'primaryBorderColor': '#1565C0',
+    'lineColor': '#efefef',
+    'secondaryColor': '#2E7D32',
+    'tertiaryColor': '#E65100',
+    'ganttBarBkgColor': '#1565C0',
+    'ganttBarBorderColor': '#efefef',
+    'ganttBarLabelColor': '#efefef',
+    'ganttCriticalBarFill': '#E65100',
+    'ganttCriticalBarStroke': '#efefef',
+    'ganttActiveBarFill': '#2E7D32',
+    'ganttActiveBarStroke': '#efefef',
+    'ganttSectionBkgColor': '#222',
+    'ganttSectionBkgColor2': '#333',
+    'titleColor': '#efefef',
+    'sectionTitleColor': '#efefef',
+    'gridLineColor': '#444',
+    'axisColor': '#efefef'
+}}}%%
 gantt
     title Temporal Architecture & Time Decay
     dateFormat  YYYY-MM-DD
@@ -154,17 +192,17 @@ Conversely, LightGBM generated massive uplifts in *every single segment*, effect
 
 ![Project Structure](docs/assets/project-structure.png)
 
-## 6. Members
+## 6. Contributions
 
 *   **Class:** DSEB 65A
 *   **Course:** Data Driven Marketing
 *   **Group:** Group 4
 
-| Student ID | Full Name         |
-| :--------- | :---------------- |
-| 11230517   | Vũ Ngọc Hồng Anh  |
-| 11230527   | Đỗ Tuấn Đạt       |
-| 11230553   | Hàn Chí Kiên      |
-| 11230570   | Phạm Hồng Minh    |
-| 11230584   | Chu Bích Phương   |
-| 11230588   | Nguyễn Thanh Thảo |
+| Student ID | Full Name         | Task Assignment                                                          |
+| :--------- | :---------------- | :----------------------------------------------------------------------- |
+| 11230517   | Vũ Ngọc Hồng Anh  | Customer Intelligence, RFM Segmentation & K-Means Profiling              |
+| 11230527   | Đỗ Tuấn Đạt       | Algorithmic Architecture, LightGBM Ranker & Personalization              |
+| 11230553   | Hàn Chí Kiên      | Exploratory Data Analysis, Temporal Isolation & Pipeline Engineering     |
+| 11230570   | Phạm Hồng Minh    | Association Discovery, MBA Baseline & ECR Heuristics                     |
+| 11230584   | Chu Bích Phương   | Data Integrity, Validation & Final Report Compiler                       |
+| 11230588   | Nguyễn Thanh Thảo | Lead. Strategic Impact, A/B Testing - RCT Simulation & Business Analysis |
