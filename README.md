@@ -201,11 +201,9 @@ To operationalize these findings, we developed a 4-tab interactive dashboard all
 | **Virtual Assistant** | Model Inference | A live demo showing personalized Top-12 recommendations for any User ID. |
 
 <div align="center">
-  <a href="[POWERBI_LINK](https://drive.google.com/drive/folders/17R1_ZM1MguQdwQFNwbqP0yBn5N8KA0_t?usp=sharing)">
-    <img src="docs/assets/powerbi_preview.png" alt="PowerBI Dashboard Preview" width="800">
-    <br/>
-    <b>Tab 4: Live Interactive Dashboard</b>
-  </a>
+  <img src="docs/assets/powerbi_preview.png" alt="PowerBI Dashboard Preview" width="800">
+  <br/>
+  <a href="https://drive.google.com/drive/folders/17R1_ZM1MguQdwQFNwbqP0yBn5N8KA0_t?usp=sharing"><b>🔗 Interactive Dashboard Download Link</b></a>
 </div>
 
 ## 6. Project Structure
