@@ -3,6 +3,7 @@
 <div align="center">
 
 [![Final Report](https://img.shields.io/badge/Final_Report-PDF-2b3137?style=flat)](docs/Final_Report.pdf)
+[![Interactive Dashboard](https://img.shields.io/badge/PowerBI-Interactive_Dashboard-EB1E25?style=flat&logo=powerbi&logoColor=white)](https://drive.google.com/drive/folders/17R1_ZM1MguQdwQFNwbqP0yBn5N8KA0_t?usp=sharing)
 [![H&M Personalized Fashion Competition](https://img.shields.io/badge/-H&M_Personalized_Fashion_Competition-20BEFF?style=flat&logo=Kaggle&logoColor=white)](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations/data)
 ![MAP@12](https://img.shields.io/badge/MAP@12-0.0075_(28_days)-success?style=flat)
 <br />
@@ -188,21 +189,40 @@ Conversely, LightGBM generated massive uplifts in *every single segment*, effect
 1.  **Homepage / Navigation (LightGBM):** Handles asynchronous, computationally heavy personalization to govern the largest IRR opportunity.
 2.  **Checkout Cart (MBA FP-Growth):** Retained for real-time impulse generation, capitalizing on high-speed association rules for active sessions.
 
-## 5. Project Structure
+## 5. Executive BI Dashboard
+
+To operationalize these findings, we developed a 4-tab interactive dashboard allowing stakeholders to explore customer segments, product affinity networks, and live A/B test results.
+
+| Tab | Focus | Key Insight |
+| :--- | :--- | :--- |
+| **RFM Explorer** | Descriptive Analytics | Visualizes the Pareto concentration where 39% of users drive 85% of revenue. |
+| **MBA Network** | Association Rules | Maps the "Gravity Well" of Ladieswear using interactive chord diagrams. |
+| **A/B Test Results** | Business Impact | Surfaces the Simpson's Paradox and quantifies the $22.9K NRU annual yield. |
+| **Virtual Assistant** | Model Inference | A live demo showing personalized Top-12 recommendations for any User ID. |
+
+<div align="center">
+  <a href="[POWERBI_LINK](https://drive.google.com/drive/folders/17R1_ZM1MguQdwQFNwbqP0yBn5N8KA0_t?usp=sharing)">
+    <img src="docs/assets/powerbi_preview.png" alt="PowerBI Dashboard Preview" width="800">
+    <br/>
+    <b>View Live Interactive Dashboard</b>
+  </a>
+</div>
+
+## 6. Project Structure
 
 ![Project Structure](docs/assets/project-structure.png)
 
-## 6. Contributions
+## 7. Contributions
 
 *   **Class:** DSEB 65A
 *   **Course:** Data Driven Marketing
 *   **Group:** Group 4
 
-| Student ID | Full Name         | Task Assignment                                                          |
-| :--------- | :---------------- | :----------------------------------------------------------------------- |
-| 11230517   | Vũ Ngọc Hồng Anh  | Customer Intelligence, RFM Segmentation & K-Means Profiling              |
-| 11230527   | Đỗ Tuấn Đạt       | Algorithmic Architecture, LightGBM Ranker & Personalization              |
-| 11230553   | Hàn Chí Kiên      | Exploratory Data Analysis, Temporal Isolation & Pipeline Engineering     |
-| 11230570   | Phạm Hồng Minh    | Association Discovery, MBA Baseline & ECR Heuristics                     |
-| 11230584   | Chu Bích Phương   | Data Integrity, Validation & Final Report Compiler                       |
-| 11230588   | Nguyễn Thanh Thảo | Lead. Strategic Impact, A/B Testing - RCT Simulation & Business Analysis |
+| Student ID | Full Name | Task Assignment |
+| :---: | :---: | :---: |
+| 11230517 | Vũ Ngọc Hồng Anh | Customer Intelligence, RFM Segmentation & K-Means Profiling |
+| 11230527 | Đỗ Tuấn Đạt | Algorithmic Architecture, LightGBM Ranker & Personalization |
+| 11230553 | Hàn Chí Kiên | Exploratory Data Analysis, Temporal Isolation & Pipeline Engineering |
+| 11230570 | Phạm Hồng Minh | Association Discovery, MBA Baseline & ECR Heuristics, PowerBI (Present Ver) |
+| 11230584 | Chu Bích Phương | Data Integrity, Validation & Final Report Compiler |
+| 11230588 | Nguyễn Thanh Thảo **(Leader)** | All Tasks Code Optimization, A/B Testing - RCT Simulation & Business Analysis, Business Action Plan, PowerBI (Advanced Ver) |
