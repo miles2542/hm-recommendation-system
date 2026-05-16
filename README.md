@@ -203,7 +203,7 @@ To operationalize these findings, we developed a 4-tab interactive dashboard all
 <div align="center">
   <img src="docs/assets/powerbi_preview.png" alt="PowerBI Dashboard Preview" width="800">
   <br/>
-  <a href="https://drive.google.com/drive/folders/17R1_ZM1MguQdwQFNwbqP0yBn5N8KA0_t?usp=sharing"><b>🔗 Interactive Dashboard Download Link</b></a>
+  <a href="https://drive.google.com/drive/folders/17R1_ZM1MguQdwQFNwbqP0yBn5N8KA0_t?usp=sharing"><b>Interactive Dashboard Download Link</b></a>
 </div>
 
 ## 6. Project Structure
@@ -217,7 +217,7 @@ To operationalize these findings, we developed a 4-tab interactive dashboard all
 *   **Group:** Group 4
 
 | Student ID | Full Name | Task Assignment |
-| :---: | :---: | :--- |
+| :---: | :---: | :---: |
 | 11230517 | Vũ Ngọc Hồng Anh | Customer Intelligence, RFM Segmentation & K-Means Profiling |
 | 11230527 | Đỗ Tuấn Đạt | Algorithmic Architecture, LightGBM Ranker & Personalization |
 | 11230553 | Hàn Chí Kiên | Exploratory Data Analysis, Temporal Isolation & Pipeline Engineering |
